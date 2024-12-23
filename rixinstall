@@ -12,6 +12,14 @@ if [ -z "$GITHUB_PAT" ]; then
     exit 1
 fi
 
+# Install depedencies
+sudo apt install build-essential curl python3-pip python3.12-venv
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.bashrc
+nvm install 22
+node -v
+npm -v
+
 # Clone repositories
 git clone https://${GITHUB_PAT}@github.com/rix-ros/rix-util
 git clone https://${GITHUB_PAT}@github.com/rix-ros/rix-msg
@@ -25,8 +33,12 @@ chmod +x install.sh
 ./install.sh
 
 cd ../rix-msg
+python3 -m venv venv
+source venv/bin/activate
+pip install pyinstaller
 chmod +x install.sh
 ./install.sh
+deactivate
 
 cd ../rix-ipc
 chmod +x install.sh
