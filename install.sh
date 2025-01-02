@@ -9,6 +9,9 @@ chmod +x install.sh
 ./install.sh || { echo "Failed to install rix-util"; exit 1; }
 
 cd ../rix-msg
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.bashrc
+nvm install 22
 python3 -m venv venv
 source venv/bin/activate
 chmod +x install.sh
