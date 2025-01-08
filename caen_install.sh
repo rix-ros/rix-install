@@ -2,6 +2,8 @@
 
 set -e
 
+module load g++/11
+
 echo "Building and installing RIX libraries ..."
 
 cd rix-util
