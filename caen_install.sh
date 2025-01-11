@@ -2,7 +2,9 @@
 
 set -e
 
-module load g++/11
+module load gcc/11
+export CC=$(which gcc)
+export CXX=$(which g++)
 
 echo "Building and installing RIX libraries ..."
 
